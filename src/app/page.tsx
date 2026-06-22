@@ -1,7 +1,6 @@
 "use client";
 
 import { SiteFooter } from "@/components/site/site-footer";
-import { SiteHeader } from "@/components/site/site-header";
 // 1. Import your brand new local shadcn button component!
 import { Button } from "@/components/ui/button";
 // 2. Import your Better-Auth frontend client wrapper tool
@@ -29,9 +28,7 @@ const howItWorks = [
 
 export default function HomePage() {
   return (
-    <>
-      <SiteHeader />
- 
+    <> 
       {/* ── Site header section: hero ──────────────────────────────────── */}
       <section className="hero-glow hero-grid relative overflow-hidden">
         <div className="relative z-10 mx-auto grid max-w-[1100px] grid-cols-1 gap-14 px-6 pt-18 pb-12 lg:grid-cols-2">

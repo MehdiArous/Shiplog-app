@@ -104,11 +104,7 @@ export function SiteHeader({
                 title="Sign out"
                 className="rounded-full cursor-pointer"
               >
-                <UserAvatar
-                  src={session.user.image}
-                  name={session.user.name}
-                  className="flex size-7 items-center justify-center rounded-full bg-linear-to-br from-primary to-info text-xs font-bold text-white"
-                />
+                <UserAvatar src={session.user.image} name={session.user.name} size="md" />
               </button>
             </div>
           ) : (

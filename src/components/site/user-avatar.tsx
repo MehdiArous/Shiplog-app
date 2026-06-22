@@ -1,31 +1,26 @@
-import Image from "next/image";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface UserAvatarProps {
   src?: string | null;
   name?: string | null;
-  size?: number;
+  size?: "sm" | "md" | "lg";
   className?: string;
 }
 
-export function UserAvatar({ src, name, size = 28, className }: UserAvatarProps) {
-  const initials = (name ?? "U").slice(0, 2).toUpperCase();
-  if (src) {
-    return (
-      <Image
-        src={src}
-        alt={name ?? "User avatar"}
-        width={size}
-        height={size}
-        className={`rounded-full object-cover ${className ?? ""}`}
-      />
-    );
-  }
+const SIZE_CLASSES: Record<NonNullable<UserAvatarProps["size"]>, string> = {
+  sm: "size-5",
+  md: "size-7",
+  lg: "size-9",
+};
+
+export function UserAvatar({ src, name, size = "md", className = "" }: UserAvatarProps) {
+  const initials = (name?.trim() || "U").slice(0, 2).toUpperCase();
   return (
-    <div
-      style={{ width: size, height: size }}
-      className={`flex shrink-0 items-center justify-center rounded-full bg-linear-to-br from-primary to-info text-xs font-bold text-white ${className ?? ""}`}
-    >
-      {initials}
-    </div>
+    <Avatar className={`${SIZE_CLASSES[size]} ${className}`}>
+      {src ? <AvatarImage src={src} alt={name ?? "User avatar"} /> : null}
+      <AvatarFallback className="bg-linear-to-br from-primary to-info text-[10px] font-bold text-white">
+        {initials}
+      </AvatarFallback>
+    </Avatar>
   );
 }
