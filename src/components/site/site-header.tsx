@@ -8,6 +8,7 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { authClient } from "@/lib/auth-client";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { UserAvatar } from "./user-avatar";
+import { ShiplogLogo } from "@/components/site/logo";
 
 interface SiteHeaderProps {
   signedIn?: boolean;
@@ -25,6 +26,7 @@ interface SiteHeaderProps {
 
 const NAV_LINKS = [
   { href: "/feed", label: "Feed" },
+  { href: "/docs", label: "Docs" },
 ];
 
 export function SiteHeader({
@@ -40,7 +42,6 @@ export function SiteHeader({
   onSignOut,
 }: SiteHeaderProps) {
   const pathname = usePathname();
-  const isActive = (href: string) => pathname === href;
   const { data: session, isPending } = authClient.useSession();
 
   const handleSignIn = async () => {
@@ -58,25 +59,29 @@ export function SiteHeader({
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
       <div className="mx-auto flex h-[52px] max-w-[1100px] items-center px-6">
         <Link href="/" className="mr-7 flex shrink-0 items-center gap-2">
-          <span className="text-base">⚡</span>
+          <ShiplogLogo size={20} />
           <span className="font-sans text-sm font-bold tracking-tight text-foreground">
             Shiplog
           </span>
         </Link>
  
         <nav className="flex flex-1 gap-1">
-          <Link
-            href="/feed"
-            className="rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-          >
-            Feed
-          </Link>
-          <Link
-            href="/docs"
-            className="rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-          >
-            Docs
-          </Link>
+          {NAV_LINKS.map(({ href, label }) => {
+            const active = pathname === href;
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                  active
+                    ? "bg-muted text-foreground"
+                    : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                }`}
+              >
+                {label}
+              </Link>
+            );
+          })}
         </nav>
  
         <div className="flex items-center gap-2">
