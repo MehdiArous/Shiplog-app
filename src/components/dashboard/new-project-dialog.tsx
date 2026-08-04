@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "../ui/textarea";
 
 interface NewProjectDialogProps {
   open: boolean;
@@ -33,7 +34,7 @@ export function NewProjectDialog({ open, onOpenChange, onCreate }: NewProjectDia
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
+      <DialogContent className="sm:max-w-xl">
         <DialogHeader>
           <DialogTitle>New project</DialogTitle>
         </DialogHeader>
@@ -49,11 +50,12 @@ export function NewProjectDialog({ open, onOpenChange, onCreate }: NewProjectDia
           </div>
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="project-description">Description</Label>
-            <Input
+            <Textarea
               id="project-description"
               placeholder="What does this project do?"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              className="min-h-[120px] max-w-full overflow-y-auto break-all [word-break:break-word] whitespace-pre-wrap"
             />
           </div>
         </div>
