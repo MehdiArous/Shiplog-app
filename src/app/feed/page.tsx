@@ -49,7 +49,7 @@ export default function FeedPage() {
 
 
   return (
-    <main className="mx-auto max-w-[780px] px-6 py-10">
+    <main className="mx-auto max-w-5xl px-6 py-10">
       <div className="mb-6 flex items-start justify-between gap-4">
         <div>
           <h1 className="text-2xl font-extrabold tracking-tight text-foreground">Public feed</h1>
