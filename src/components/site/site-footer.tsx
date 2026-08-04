@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ShiplogLogo } from "./logo";
 
 const columns = [
   {
@@ -34,7 +35,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <div className="mb-3.5 flex items-center gap-2">
-              <span className="text-base">⚡</span>
+              <ShiplogLogo></ShiplogLogo>
               <span className="font-sans text-sm font-bold tracking-tight text-foreground">
                 Shiplog
               </span>
