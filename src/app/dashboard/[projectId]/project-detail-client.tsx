@@ -256,6 +256,12 @@ export function ProjectDetailClient({
                     ↑ Publish
                   </Button>
                 )}
+                <Link
+                  href={`/changelog/${log.id}?from=project`}
+                  className="ml-auto font-mono text-[11px] text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  View →
+                </Link>
               </div>
             </div>
           </div>

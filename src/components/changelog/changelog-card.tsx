@@ -8,7 +8,7 @@ import type { Changelog, Project } from "@/lib/mock-data";
 export function FeedChangelogCard({ changelog, project }: { changelog: Changelog; project: Project }) {
   return (
     <Link
-      href={`/changelog/${changelog.id}`}
+      href={`/changelog/${changelog.id}?from=feed`}
       className="group block rounded-xl border border-border bg-card p-5 transition-colors hover:border-input"
     >
       <div className="flex items-start justify-between gap-4">
