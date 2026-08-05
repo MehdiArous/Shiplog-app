@@ -21,7 +21,7 @@ const columns = [
   {
     label: "Project",
     links: [
-      { label: "GitHub", href: "https://github.com" },
+      { label: "GitHub", href: "https://github.com/MehdiArous/Shiplog-app" },
       { label: "Privacy", href: "/privacy" },
       { label: "Terms", href: "/terms" },
     ],
